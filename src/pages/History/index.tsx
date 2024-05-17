@@ -17,7 +17,7 @@ import { Wrapper } from "@/components/Wrapper";
 import { IMonitoring } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
-import { FilterBox } from "./FilterBox";
+import { FilterBox } from "./components/FilterBox";
 
 export const History = () => {
   const { mutate, data, isLoading } = useMutation({

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import {
   Spinner,
@@ -16,8 +16,10 @@ import { Wrapper } from "@/components/Wrapper";
 import { IUsers } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 import { statusChip } from "@/shared/utils";
+import { Headline } from "./components/Headline";
 
 export const Users = () => {
+  const [search, setSearch] = useState<string>("");
   const { mutate, data, isLoading } = useMutation({
     mutationFn: () => Https.get(ENDPOINTS.GET_USERS()),
   });
@@ -28,6 +30,7 @@ export const Users = () => {
 
   return (
     <Wrapper title="İstifadəçilər">
+      <Headline setSearch={setSearch} search={search} />
       {isLoading && (
         <div className="w-full flex items-start justify-center">
           <Spinner />
@@ -43,14 +46,20 @@ export const Users = () => {
               <TableColumn>Status</TableColumn>
             </TableHeader>
             <TableBody>
-              {(data as IUsers[]).map((item: IUsers) => {
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
-                    <TableCell>{statusChip(item?.userType)}</TableCell>
-                  </TableRow>
-                );
-              })}
+              {(data as IUsers[])
+                .filter((e: IUsers) =>
+                  `${e?.username.toLowerCase()} ${e.surname.toLowerCase()}`.includes(
+                    search.toLowerCase()
+                  )
+                )
+                .map((item: IUsers) => {
+                  return (
+                    <TableRow key={item.id}>
+                      <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
+                      <TableCell>{statusChip(item?.userType)}</TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
         </div>
