@@ -64,7 +64,10 @@ export const statusChip = (e: string) => {
           variant="bordered"
           size="lg"
           color="warning"
-          classNames={{ base: `w-[100px] min-w-[100px]` }}
+          classNames={{
+            base: `w-[100px] min-w-[100px]`,
+            content: `flex iitems-center justify-center`,
+          }}
         >
           Pulsuz
         </Chip>

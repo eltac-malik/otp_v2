@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
+import dayjs from "dayjs";
 import {
   Spinner,
   Table,
@@ -17,6 +18,7 @@ import { IUsers } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 import { statusChip } from "@/shared/utils";
 import { Headline } from "./components/Headline";
+import { Operation } from "./components/Operation";
 
 export const Users = () => {
   const [search, setSearch] = useState<string>("");
@@ -42,8 +44,16 @@ export const Users = () => {
         <div className="w-full flex items-start justify-start">
           <Table isStriped>
             <TableHeader>
+              <TableColumn>Id kod</TableColumn>
               <TableColumn>İstifadəçi</TableColumn>
               <TableColumn>Status</TableColumn>
+              <TableColumn>Tarix</TableColumn>
+              <TableColumn
+                align="end"
+                className="flex items-center justify-end"
+              >
+                Əməliyyat
+              </TableColumn>
             </TableHeader>
             <TableBody>
               {(data as IUsers[])
@@ -55,8 +65,18 @@ export const Users = () => {
                 .map((item: IUsers) => {
                   return (
                     <TableRow key={item.id}>
+                      <TableCell>{item?.personId}</TableCell>
                       <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
                       <TableCell>{statusChip(item?.userType)}</TableCell>
+                      <TableCell>
+                        {dayjs(item?.createdAt).format("YYYY/MM/DD hh:mm:ss")}
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        className="flex items-end justify-end"
+                      >
+                        <Operation />
+                      </TableCell>
                     </TableRow>
                   );
                 })}

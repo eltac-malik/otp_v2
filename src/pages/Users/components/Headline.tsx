@@ -60,8 +60,7 @@ export const Headline: React.FC<THeadline> = ({ setSearch, search }) => {
         />
         <Button
           type="submit"
-          className="ml-1 w-36 text-white rounded-lg"
-          color="success"
+          className="ml-1 w-36 text-white rounded-lg bg-base"
           onClick={onOpen}
         >
           Yeni İstifadəçi
