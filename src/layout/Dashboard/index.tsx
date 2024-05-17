@@ -6,11 +6,9 @@ import { useMediaQuery } from "react-responsive";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 
-type TLayout = {
-  children: any;
-};
+type TLayout = {};
 
-export const Layout: React.FC<TLayout> = ({ children }) => {
+export const Layout: React.FC<TLayout> = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
   const [isFull, setIsFull] = useState(false);
   return (

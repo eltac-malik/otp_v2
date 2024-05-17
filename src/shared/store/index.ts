@@ -1,7 +1,13 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-import { TDrawer, TFavoriteOperation, IUserInfo, TUserInfo } from "../models";
+import {
+  TDrawer,
+  TFavoriteOperation,
+  IUserInfo,
+  TUserInfo,
+  TToken,
+} from "../models";
 
 export const useDrawer = create<TDrawer>((set) => ({
   isDrawer: true,
@@ -16,6 +22,19 @@ export const useFavoriteOperation = create(
     }),
     {
       name: "favorites",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
+
+export const useToken = create(
+  persist<TToken>(
+    (set) => ({
+      token: "",
+      setToken: (val: string) => set({ token: val }),
+    }),
+    {
+      name: "token",
       storage: createJSONStorage(() => localStorage),
     }
   )

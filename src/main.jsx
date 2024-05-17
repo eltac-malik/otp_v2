@@ -7,6 +7,7 @@ import App from "./App.jsx";
 
 import "./index.css";
 import "react-modern-drawer/dist/index.css";
+import "react-toastify/dist/ReactToastify.css";
 import "swiper/css";
 import "swiper/css/navigation";
 

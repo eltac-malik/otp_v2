@@ -23,7 +23,7 @@ export const Logout: React.FC<TLogout> = ({ isFull }) => {
 
   const handleLogout = () => {
     navigate("/login");
-    localStorage.removeItem("userInfo");
+    localStorage.removeItem("token");
   };
 
   return (

@@ -25,3 +25,8 @@ export type TUserInfo = {
   userInfo: IUserInfo | null;
   setUserInfo: (val: any) => void;
 };
+
+export type TToken = {
+  token: string;
+  setToken: (val: string) => void;
+};

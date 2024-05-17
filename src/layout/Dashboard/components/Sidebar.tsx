@@ -21,7 +21,7 @@ export const Sidebar: React.FC<TSidebar> = ({ isFull, setIsFull }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
-  const { sidebarList } = useSidebar();
+  const { sideList } = useSidebar();
   const { isDrawer, setIsDrawer } = useDrawer();
 
   const handleClick = () => setIsDrawer(!isDrawer);
@@ -38,7 +38,7 @@ export const Sidebar: React.FC<TSidebar> = ({ isFull, setIsFull }) => {
         <div
           className={`w-full h-full relative flex items-center justify-start flex-col p-1`}
         >
-          {sidebarList.map((item) => {
+          {sideList.map((item) => {
             return <SideItem key={item.id} item={item} isFull={isFull} />;
           })}
         </div>

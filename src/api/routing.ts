@@ -1,8 +1,16 @@
-export const BASE_URL = "https://traveltour.host/api";
+const BASE_URL = "http://81.17.88.212:8088/api/v1";
 
 export const ENDPOINTS = {
-  SEND_OTP_CODE: () => `${BASE_URL}/auth/login`,
-  CHECK_OTP: () => `${BASE_URL}/auth/check-otp`,
-  GET_ANNOUNCEMENT_WITH_PAGE: (page: number) =>
-    `${BASE_URL}/apartments?page=${page}`,
+  POST_LOGIN: () => `${BASE_URL}/auth/login`,
+  GET_USERS: () => `${BASE_URL}/users`,
+  GET_LIVE_MONITORING: () => `${BASE_URL}/monitoring/live`,
+  GET_HISTORY_MONITORING: ({
+    username = "",
+    card_id = "",
+    room_number = "",
+    from = "",
+    to = "",
+  }) => {
+    return `${BASE_URL}/monitoring/offline?username=${username}&from=${from}&to=${to}&card_id=${card_id}&room_number=${room_number}`;
+  },
 };
