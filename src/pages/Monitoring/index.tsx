@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import dayjs from "dayjs";
 import {
   Table,
   TableHeader,
@@ -52,9 +51,7 @@ export const Monitoring = () => {
                 return (
                   <TableRow key={item.time}>
                     <TableCell>{item?.person}</TableCell>
-                    <TableCell>
-                      {dayjs(item?.time).format("YYYY/MM/DD hh:mm:ss")}
-                    </TableCell>
+                    <TableCell>{item?.time}</TableCell>
                     <TableCell>{tripodTextType(item?.device)}</TableCell>
                     <TableCell>{tripodType(item?.device)}</TableCell>
                     <TableCell>{statusChip(item?.type)}</TableCell>

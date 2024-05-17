@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
-import dayjs from "dayjs";
 import {
   Spinner,
   Table,
@@ -68,9 +67,7 @@ export const Users = () => {
                       <TableCell>{item?.personId}</TableCell>
                       <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
                       <TableCell>{statusChip(item?.userType)}</TableCell>
-                      <TableCell>
-                        {dayjs(item?.createdAt).format("YYYY/MM/DD hh:mm:ss")}
-                      </TableCell>
+                      <TableCell>{item?.createdAt?.split(".")[0]}</TableCell>
                       <TableCell
                         align="left"
                         className="flex items-end justify-end"
