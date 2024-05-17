@@ -1,5 +1,7 @@
 import { LuMonitorPlay } from "react-icons/lu";
 import { GrHistory } from "react-icons/gr";
+import { FaUsers } from "react-icons/fa";
+
 import { PATH } from "./path";
 
 export const sideList = [
@@ -16,5 +18,12 @@ export const sideList = [
     permission: [],
     icon: () => <GrHistory size={17} />,
     path: PATH.HISTORY,
+  },
+  {
+    id: 3,
+    title: "İstifadəçilər",
+    permission: [],
+    icon: () => <FaUsers size={17} />,
+    path: PATH.USERS,
   },
 ];

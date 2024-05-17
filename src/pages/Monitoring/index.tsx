@@ -13,11 +13,11 @@ import { Wrapper } from "@/components/Wrapper";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 import { ENDPOINTS } from "@/api/routing";
 import Https from "@/api/http";
-import { TMonitoring } from "@/shared/models/api";
+import { IMonitoring } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 
 export const Monitoring = () => {
-  const { data, isLoading, refetch } = useQuery<TMonitoring[]>(
+  const { data, isLoading, refetch } = useQuery<IMonitoring[]>(
     "MONITORING",
     () => Https.get(ENDPOINTS.GET_LIVE_MONITORING()),
     {
@@ -36,8 +36,8 @@ export const Monitoring = () => {
           <Spinner />
         </div>
       )}
-      {(data as TMonitoring[])?.length <= 0 && <NotFound />}
-      {!isLoading && (data as TMonitoring[])?.length > 0 && (
+      {(data as IMonitoring[])?.length <= 0 && <NotFound />}
+      {!isLoading && (data as IMonitoring[])?.length > 0 && (
         <div className="w-full flex items-start justify-start">
           <Table>
             <TableHeader>
@@ -48,7 +48,7 @@ export const Monitoring = () => {
               <TableColumn>Status</TableColumn>
             </TableHeader>
             <TableBody>
-              {(data as TMonitoring[]).map((item: TMonitoring) => {
+              {(data as IMonitoring[]).map((item: IMonitoring) => {
                 return (
                   <TableRow key={item.time}>
                     <TableCell>{item?.person}</TableCell>

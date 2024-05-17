@@ -6,6 +6,7 @@ import { ProtectedRoute } from "@/components/Protection";
 
 import { Monitoring } from "@/pages/Monitoring";
 import { History } from "@/pages/History";
+import { Users } from "@/pages/Users";
 import { Login } from "@/pages/Login";
 
 import "./App.css";
@@ -19,6 +20,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path={PATH.MONITORING} element={<Monitoring />} />
             <Route path={PATH.HISTORY} element={<History />} />
+            <Route path={PATH.USERS} element={<Users />} />
           </Route>
         </Route>
       </Routes>
