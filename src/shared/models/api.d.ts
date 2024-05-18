@@ -16,5 +16,5 @@ export interface IUsers {
   surname: string;
   userType: string;
   username: string;
-  personId: string;
+  personPin: string;
 }
