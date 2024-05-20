@@ -10,4 +10,4 @@ services:
     volumes:
       - ./src:/app/src
     ports:
-      - "3000:3000"
+      - "10.100.40.14:3000:3000"
