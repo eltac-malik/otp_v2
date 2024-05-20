@@ -12,6 +12,14 @@ export const instance = axios.create({
   },
 });
 
+instance.interceptors.response.use((response) => {
+  if (response.status === 403) {
+    console.log("refresh");
+  }
+
+  return response;
+});
+
 class Https {
   static get(url: string) {
     return instance.get(url).then((res) => res.data);
