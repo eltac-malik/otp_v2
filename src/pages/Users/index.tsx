@@ -64,7 +64,7 @@ export const Users = () => {
                 .map((item: IUsers) => {
                   return (
                     <TableRow key={item.id}>
-                      <TableCell>{item?.personId}</TableCell>
+                      <TableCell>{item?.personPin}</TableCell>
                       <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
                       <TableCell>{statusChip(item?.userType)}</TableCell>
                       <TableCell>{item?.createdAt?.split(".")[0]}</TableCell>

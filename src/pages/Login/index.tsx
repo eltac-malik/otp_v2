@@ -59,6 +59,7 @@ export const Login = () => {
           className="my-2 w-full"
           placeholder="Şifrə"
           {...register("password")}
+          type="password"
           isInvalid={!!errors.password}
           errorMessage={errors?.password?.message as string}
           classNames={{

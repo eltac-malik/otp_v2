@@ -38,12 +38,17 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
         }}
       />
-      <Input
+       <Input
         className="my-2 mr-1 w-44"
         type="datetime-local"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValue("from", dayjs(e.target.value).format("YYYY-MM-DD HH:mm:ss"))
-        }
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          if (value) {
+            setValue("from", dayjs(value).format("YYYY-MM-DD HH:mm:ss"));
+          } else {
+            setValue("from", ""); // or set it to null if that makes more sense for your logic
+          }
+        }}
         classNames={{
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
         }}
@@ -51,9 +56,14 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
       <Input
         className="my-2 mr-1 w-44"
         type="datetime-local"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setValue("to", dayjs(e.target.value).format("YYYY-MM-DD HH:mm:ss"))
-        }
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          const value = e.target.value;
+          if (value) {
+            setValue("to", dayjs(value).format("YYYY-MM-DD HH:mm:ss"));
+          } else {
+            setValue("to", ""); // or set it to null if that makes more sense for your logic
+          }
+        }}
         classNames={{
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
         }}
