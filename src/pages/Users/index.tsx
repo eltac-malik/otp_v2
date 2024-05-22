@@ -17,7 +17,7 @@ import { IUsers } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 import { statusChip } from "@/shared/utils";
 import { Headline } from "./components/Headline";
-import { Operation } from "./components/Operation";
+// import { Operation } from "./components/Operation";
 
 export const Users = () => {
   const [search, setSearch] = useState<string>("");
@@ -72,7 +72,8 @@ export const Users = () => {
                         align="left"
                         className="flex items-end justify-end"
                       >
-                        <Operation />
+                        {/* <Operation /> */}
+                        {""}
                       </TableCell>
                     </TableRow>
                   );
