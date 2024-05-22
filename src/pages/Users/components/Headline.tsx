@@ -5,6 +5,7 @@ type THeadline = {
   search: string;
 };
 
+
 export const Headline: React.FC<THeadline> = ({ setSearch, search }) => {
   return (
     <div className="w-full flex items-center justify-between">
