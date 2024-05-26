@@ -41,6 +41,7 @@ export const Monitoring = () => {
           <Table>
             <TableHeader>
               <TableColumn>İstifadəçi</TableColumn>
+              <TableColumn>Otaq</TableColumn>
               <TableColumn>Tarix</TableColumn>
               <TableColumn>Cihaz</TableColumn>
               <TableColumn>Giriş / Çıxış</TableColumn>
@@ -51,6 +52,7 @@ export const Monitoring = () => {
                 return (
                   <TableRow key={item.time}>
                     <TableCell>{item?.person}</TableCell>
+                    <TableCell>{item?.roomNumber}</TableCell>
                     <TableCell>{item?.time}</TableCell>
                     <TableCell>{tripodTextType(item?.device)}</TableCell>
                     <TableCell>{tripodType(item?.device)}</TableCell>

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -14,15 +15,18 @@ import {
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { Edit } from "./modal/Edit";
 import { Delete } from "./modal/Delete";
+import { IUsers } from "@/shared/models/api";
 
-export const Operation = () => {
+type TOperation = {
+  item: IUsers;
+  mutate?: any;
+};
+
+export const Operation: React.FC<TOperation> = ({ item, mutate }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const {
-    isOpen: isDeleteOpen,
-    onOpen: openDelete,
-    onOpenChange: onDeleteOpenChange,
-  } = useDisclosure();
-
+  const { isOpen: isDeleteOpen, onOpenChange: onDeleteOpenChange } =
+    useDisclosure();
+  const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
   return (
     <>
       <Modal
@@ -33,9 +37,15 @@ export const Operation = () => {
         onOpenChange={onOpenChange}
       >
         <ModalContent>
-          <ModalHeader className="flex flex-col gap-1">Edit</ModalHeader>
+          <ModalHeader className="flex flex-col gap-1">
+            {currentUser?.username}
+          </ModalHeader>
           <ModalBody>
-            <Edit />
+            <Edit
+              currentUser={currentUser}
+              onOpenChange={onOpenChange}
+              mutate={mutate}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -61,17 +71,23 @@ export const Operation = () => {
           </Button>
         </DropdownTrigger>
         <DropdownMenu aria-label="Static Actions">
-          <DropdownItem key="edit" onClick={() => onOpen()}>
+          <DropdownItem
+            key="edit"
+            onClick={() => {
+              setCurrentUser(item);
+              onOpen();
+            }}
+          >
             Düzəliş et
           </DropdownItem>
-          <DropdownItem
+          {/* <DropdownItem
             key="delete"
             className="text-danger"
             color="danger"
             onClick={() => openDelete()}
           >
             Sil
-          </DropdownItem>
+          </DropdownItem> */}
         </DropdownMenu>
       </Dropdown>
     </>

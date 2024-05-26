@@ -1,5 +1,5 @@
 export interface IMonitoring {
-  card: string;
+  roomNumber: string;
   device: string;
   person: string;
   time: string;
@@ -17,4 +17,5 @@ export interface IUsers {
   userType: string;
   username: string;
   personPin: string;
+  roomNumber: string;
 }

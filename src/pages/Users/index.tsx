@@ -17,7 +17,7 @@ import { IUsers } from "@/shared/models/api";
 import { NotFound } from "@/components/NotFound";
 import { statusChip } from "@/shared/utils";
 import { Headline } from "./components/Headline";
-// import { Operation } from "./components/Operation";
+import { Operation } from "./components/Operation";
 
 export const Users = () => {
   const [search, setSearch] = useState<string>("");
@@ -45,6 +45,7 @@ export const Users = () => {
             <TableHeader>
               <TableColumn>Id kod</TableColumn>
               <TableColumn>İstifadəçi</TableColumn>
+              <TableColumn>Otaq</TableColumn>
               <TableColumn>Status</TableColumn>
               <TableColumn>Tarix</TableColumn>
               <TableColumn
@@ -66,14 +67,14 @@ export const Users = () => {
                     <TableRow key={item.id}>
                       <TableCell>{item?.personPin}</TableCell>
                       <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
+                      <TableCell>{item?.roomNumber}</TableCell>
                       <TableCell>{statusChip(item?.userType)}</TableCell>
                       <TableCell>{item?.createdAt?.split(".")[0]}</TableCell>
                       <TableCell
                         align="left"
                         className="flex items-end justify-end"
                       >
-                        {/* <Operation /> */}
-                        {""}
+                        <Operation item={item} mutate={mutate} />
                       </TableCell>
                     </TableRow>
                   );
