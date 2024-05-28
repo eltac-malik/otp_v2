@@ -60,11 +60,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
         }}
       />
-      <Button
-        type="submit"
-        className="ml-1 w-40 text-white rounded-lg"
-        color="success"
-      >
+      <Button type="submit" className="ml-1 w-40 text-white rounded-lg bg-base">
         Axtar
       </Button>
     </form>
