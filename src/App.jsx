@@ -8,6 +8,7 @@ import { Monitoring } from "@/pages/Monitoring";
 import { History } from "@/pages/History";
 import { Users } from "@/pages/Users";
 import { Login } from "@/pages/Login";
+import { Check } from "@/pages/Check";
 
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
             <Route path={PATH.MONITORING} element={<Monitoring />} />
             <Route path={PATH.HISTORY} element={<History />} />
             <Route path={PATH.USERS} element={<Users />} />
+            <Route path={PATH.CHECK} element={<Check />} />
           </Route>
         </Route>
       </Routes>

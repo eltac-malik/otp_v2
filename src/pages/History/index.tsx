@@ -42,12 +42,24 @@ export const History = () => {
         <div className="w-full flex items-start justify-start">
           <Table>
             <TableHeader>
-              <TableColumn>İstifadəçi</TableColumn>
-              <TableColumn>Otaq</TableColumn>
-              <TableColumn>Tarix</TableColumn>
-              <TableColumn>Cihaz</TableColumn>
-              <TableColumn>Giriş / Çıxış</TableColumn>
-              <TableColumn>Status</TableColumn>
+              <TableColumn className="font-semibold text-base">
+                İstifadəçi
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Otaq
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Tarix
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Cihaz
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Giriş / Çıxış
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Status
+              </TableColumn>
             </TableHeader>
             <TableBody>
               {(data as IMonitoring[]).map((item: IMonitoring) => {

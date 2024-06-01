@@ -18,18 +18,18 @@ export default {
         "2xl": { min: "1601px" },
       },
       backgroundColor: {
-        base: "#00B074",
-        secondary: "#018457",
+        base: "#505F4E",
+        secondary: "#505F4E",
         third: "#F1FDF6",
         green: "#22BB87",
         dash: "#F1F1F1",
       },
       borderColor: {
-        base: "#00B074",
+        base: "#505F4E",
         secondary: "#018457",
       },
       textColor: {
-        base: "#00B074",
+        base: "#505F4E",
         secondary: "#018457",
         third: "#22BB87",
         grey: "#676F7D",

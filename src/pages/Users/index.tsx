@@ -43,11 +43,21 @@ export const Users = () => {
         <div className="w-full flex items-start justify-start">
           <Table isStriped>
             <TableHeader>
-              <TableColumn>Id kod</TableColumn>
-              <TableColumn>İstifadəçi</TableColumn>
-              <TableColumn>Otaq</TableColumn>
-              <TableColumn>Status</TableColumn>
-              <TableColumn>Tarix</TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Id kod
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                İstifadəçi
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Otaq
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Status
+              </TableColumn>
+              <TableColumn className="font-semibold text-base">
+                Tarix
+              </TableColumn>
               <TableColumn
                 align="end"
                 className="flex items-center justify-end"

@@ -20,7 +20,7 @@ export const SideItem: React.FC<TSideItem> = ({ item, isFull }) => {
       onClick={() => handleNavigate(item.path)}
       key={item.id}
       className={`w-full h-11 rounded-sm my-1 p-2 flex select-none cursor-pointer items-center justify-start  hover:bg-[#00b07546] 
-    ${cn({ ["bg-base"]: item.path === location.pathname })} ${cn({
+    ${cn({ ["bg-[#00b07546]"]: item.path === location.pathname })} ${cn({
         ["justify-center"]: isFull,
       })}
     `}

@@ -1,6 +1,7 @@
 import { LuMonitorPlay } from "react-icons/lu";
 import { GrHistory } from "react-icons/gr";
 import { FaUsers } from "react-icons/fa";
+import { FaListCheck } from "react-icons/fa6";
 
 import { PATH } from "./path";
 
@@ -25,5 +26,12 @@ export const sideList = [
     permission: [],
     icon: () => <FaUsers size={17} />,
     path: PATH.USERS,
+  },
+  {
+    id: 4,
+    title: "Yoxlanış",
+    permission: [],
+    icon: () => <FaListCheck size={17} />,
+    path: PATH.CHECK,
   },
 ];
