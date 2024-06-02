@@ -67,9 +67,8 @@ export const Login = () => {
           }}
         />
         <Button
-          color="success"
           type="submit"
-          className="text-white rounded-lg w-full h-12 my-2"
+          className="text-white rounded-lg w-full h-12 my-2 bg-base"
           isLoading={isLoading}
         >
           Daxil ol

@@ -1,4 +1,7 @@
+// INTERNAL
 const BASE_URL = "http://10.100.40.14:8088/api/v1";
+
+// EXTERNAL
 // const BASE_URL = "http://81.17.88.212:8088/api/v1";
 
 export const ENDPOINTS = {
