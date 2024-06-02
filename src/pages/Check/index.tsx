@@ -5,6 +5,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Spinner,
 } from "@nextui-org/react";
 import { Wrapper } from "@/components/Wrapper";
 import { useQuery } from "react-query";
@@ -14,7 +15,11 @@ import { ENDPOINTS } from "@/api/routing";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 
 export const Check = () => {
-  const { data, isLoading, refetch } = useQuery<IMonitoring[]>(
+  const {
+    data = [],
+    isLoading,
+    refetch,
+  } = useQuery<IMonitoring[]>(
     "MONITORING",
     () => Https.get(ENDPOINTS.GET_IN_PLACE()),
     {
@@ -25,10 +30,14 @@ export const Check = () => {
       },
     }
   );
-  console.log(data);
 
   return (
     <Wrapper title="Hal-hazırda plazada olanlar">
+      {isLoading && (
+        <div className="w-full flex items-start justify-center">
+          <Spinner />
+        </div>
+      )}
       <div className="w-full flex items-start justify-start">
         <Table>
           <TableHeader>
