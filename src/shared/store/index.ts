@@ -7,6 +7,7 @@ import {
   IUserInfo,
   TUserInfo,
   TToken,
+  TUseSidebarSize,
 } from "../models";
 
 export const useDrawer = create<TDrawer>((set) => ({
@@ -48,6 +49,19 @@ export const useUserInfo = create(
     }),
     {
       name: "userInfo",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
+
+export const useSidebarSize = create(
+  persist<TUseSidebarSize>(
+    (set) => ({
+      isFull: false,
+      setIsFull: (val: boolean) => set({ isFull: val }),
+    }),
+    {
+      name: "useSidebarSize",
       storage: createJSONStorage(() => localStorage),
     }
   )

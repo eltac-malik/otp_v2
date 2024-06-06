@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 
 import { When } from "@/components/When";
-import { useDrawer } from "@/shared/store";
+import { useDrawer, useSidebarSize } from "@/shared/store";
 import { useSidebar } from "@/shared/hooks";
 import { SideItem } from "./SideItem";
 import { Logout } from "./Logout";
@@ -12,13 +12,9 @@ import { Logout } from "./Logout";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { SideHide } from "@/assets/icons/SideHide";
 
-type TSidebar = {
-  isFull: boolean;
-  setIsFull: any;
-};
-
-export const Sidebar: React.FC<TSidebar> = ({ isFull, setIsFull }) => {
+export const Sidebar: React.FC = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
+  const { isFull, setIsFull } = useSidebarSize();
   const arrowRef = useRef<HTMLDivElement | null>(null);
 
   const { sideList } = useSidebar();

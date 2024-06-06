@@ -17,7 +17,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
       className="w-full flex items-center justify-start"
     >
       <Input
-        className="my-2 mr-1 w-44"
+        className="my-2 mr-1 w-56"
         placeholder={t("placeholders.userName")}
         {...register("username")}
         classNames={{
@@ -25,7 +25,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
         }}
       />
       <Input
-        className="my-2 mr-1 w-44"
+        className="my-2 mr-1 w-56"
         placeholder={t("placeholders.roomNo")}
         {...register("room_number")}
         classNames={{
@@ -33,7 +33,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
         }}
       />
       <Input
-        className="my-2 mr-1 w-44"
+        className="my-2 mr-1 w-56"
         type="datetime-local"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
@@ -48,7 +48,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
         }}
       />
       <Input
-        className="my-2 mr-1 w-44"
+        className="my-2 mr-1 w-56"
         type="datetime-local"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;

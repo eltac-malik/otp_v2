@@ -30,3 +30,8 @@ export type TToken = {
   token: string;
   setToken: (val: string) => void;
 };
+
+export type TUseSidebarSize = {
+  isFull: boolean;
+  setIsFull: (val: boolean) => void;
+};

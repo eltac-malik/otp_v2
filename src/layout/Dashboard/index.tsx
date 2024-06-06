@@ -5,12 +5,13 @@ import { useMediaQuery } from "react-responsive";
 
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
+import { useSidebarSize } from "@/shared/store";
 
 type TLayout = {};
 
 export const Layout: React.FC<TLayout> = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 900px)" });
-  const [isFull, setIsFull] = useState(false);
+  const { isFull } = useSidebarSize();
   return (
     <div
       className={`w-full flex items-center justify-start flex-col ${cn({
@@ -27,7 +28,7 @@ export const Layout: React.FC<TLayout> = () => {
         ${cn({ "pr-5": !isMobile })}
         `}
       >
-        <Sidebar isFull={isFull} setIsFull={setIsFull} />
+        <Sidebar />
         <div
           className={`w-full ${
             isFull ? "ml-[100px]" : "ml-[290px]"

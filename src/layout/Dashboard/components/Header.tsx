@@ -40,7 +40,7 @@ export const Header = () => {
         <p className="w-12 h-12 rounded-full overflow-hidden cursor-pointer flex items-center justify-center ml-5 font-semibold text-xl">
           <img className="w-full" src={OTPLogo} />
         </p>
-        <h1 className="font-semibold text-xl text-yellow-600">
+        <h1 className="font-semibold text-2xl text-yellow-600">
           Old Town Plaza
         </h1>
         <div className="flex items-center justify-end">
@@ -53,9 +53,9 @@ export const Header = () => {
             selectedKeys={[currentLang]}
             onChange={(e) => handleChange(e.target.value)}
             classNames={{
-              base: `w-28 !min-h-10`,
-              mainWrapper: `w-28 !min-h-10`,
-              trigger: `w-28 !min-h-10 h-10`,
+              base: `w-24 !min-h-10`,
+              mainWrapper: `w-24 !min-h-10`,
+              trigger: `w-24 !min-h-10 h-10`,
               value: `font-semibold`,
             }}
           >
@@ -65,7 +65,7 @@ export const Header = () => {
                   startContent={
                     <Avatar
                       alt="Argentina"
-                      className="w-6 h-6"
+                      className="w-4 h-4"
                       src={flagGenerate(item)}
                     />
                   }
