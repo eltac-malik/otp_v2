@@ -16,6 +16,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { Edit } from "./modal/Edit";
 import { Delete } from "./modal/Delete";
 import { IUsers } from "@/shared/models/api";
+import { useTranslation } from "react-i18next";
 
 type TOperation = {
   item: IUsers;
@@ -24,6 +25,7 @@ type TOperation = {
 
 export const Operation: React.FC<TOperation> = ({ item, mutate }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { t } = useTranslation();
   const { isOpen: isDeleteOpen, onOpenChange: onDeleteOpenChange } =
     useDisclosure();
   const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
@@ -78,7 +80,7 @@ export const Operation: React.FC<TOperation> = ({ item, mutate }) => {
               onOpen();
             }}
           >
-            Düzəliş et
+            {t("edit")}
           </DropdownItem>
           {/* <DropdownItem
             key="delete"

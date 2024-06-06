@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { Button, Input } from "@nextui-org/react";
 import { UseMutateFunction } from "react-query";
 
@@ -8,6 +9,7 @@ type TFilterBox = {
 };
 
 export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
+  const { t } = useTranslation();
   const { register, handleSubmit, setValue } = useForm();
   return (
     <form
@@ -16,7 +18,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
     >
       <Input
         className="my-2 mr-1 w-44"
-        placeholder="İstifadəçi ad və soyadı"
+        placeholder={t("placeholders.userName")}
         {...register("username")}
         classNames={{
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
@@ -24,7 +26,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
       />
       <Input
         className="my-2 mr-1 w-44"
-        placeholder="otaq No"
+        placeholder={t("placeholders.roomNo")}
         {...register("room_number")}
         classNames={{
           inputWrapper: `h-10 bg-white dark:bg-black border-1 rounded-lg`,
@@ -61,7 +63,7 @@ export const FilterBox: React.FC<TFilterBox> = ({ mutate }) => {
         }}
       />
       <Button type="submit" className="ml-1 w-40 text-white rounded-lg bg-base">
-        Axtar
+        {t("search")}
       </Button>
     </form>
   );

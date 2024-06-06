@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMutation } from "react-query";
+import { useTranslation } from "react-i18next";
 import {
   Spinner,
   Table,
@@ -20,6 +21,7 @@ import { Headline } from "./components/Headline";
 import { Operation } from "./components/Operation";
 
 export const Users = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState<string>("");
   const { mutate, data, isLoading } = useMutation({
     mutationFn: () => Https.get(ENDPOINTS.GET_USERS()),
@@ -30,7 +32,7 @@ export const Users = () => {
   }, []);
 
   return (
-    <Wrapper title="İstifadəçilər">
+    <Wrapper title={t("users")}>
       <Headline setSearch={setSearch} search={search} />
       {isLoading && (
         <div className="w-full flex items-start justify-center">
@@ -47,22 +49,22 @@ export const Users = () => {
                 Id kod
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                İstifadəçi
+                {t("tables.user")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Otaq
+                {t("tables.room")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Status
+                {t("tables.status")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Tarix
+                {t("tables.date")}
               </TableColumn>
               <TableColumn
                 align="end"
                 className="flex items-center justify-end"
               >
-                Əməliyyat
+                {t("tables.operation")}
               </TableColumn>
             </TableHeader>
             <TableBody>

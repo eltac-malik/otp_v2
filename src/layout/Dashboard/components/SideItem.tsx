@@ -4,6 +4,7 @@ import cn from "classnames";
 import { Tooltip } from "@nextui-org/react";
 
 import { When } from "@/components/When";
+import { useTranslation } from "react-i18next";
 
 type TSideItem = {
   item: any;
@@ -13,6 +14,7 @@ type TSideItem = {
 export const SideItem: React.FC<TSideItem> = ({ item, isFull }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
 
   const handleNavigate = (path: string) => navigate(path);
   return (
@@ -27,7 +29,7 @@ export const SideItem: React.FC<TSideItem> = ({ item, isFull }) => {
     >
       <When condition={isFull}>
         <Tooltip
-          content={item.title}
+          content={t(`${item.title}`)}
           placement="right"
           showArrow
           classNames={{
@@ -45,7 +47,7 @@ export const SideItem: React.FC<TSideItem> = ({ item, isFull }) => {
       </When>
       <When condition={!isFull}>
         <span className="mr-2 text-white">{item.icon()}</span>
-        <span className="text-white">{item.title}</span>
+        <span className="text-white">{t(`${item.title}`)}</span>
       </When>
     </div>
   );

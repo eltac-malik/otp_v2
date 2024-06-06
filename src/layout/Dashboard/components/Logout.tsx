@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -19,6 +20,7 @@ type TLogout = {
 
 export const Logout: React.FC<TLogout> = ({ isFull }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleLogout = () => {
@@ -39,7 +41,7 @@ export const Logout: React.FC<TLogout> = ({ isFull }) => {
             <>
               <ModalBody>
                 <div className="w-full flex items-center justify-center font-medium text-lg p-8">
-                  Çıxış etmək istədiyinizdən əminsinizmi?
+                  {t("log.confirmText")}
                 </div>
               </ModalBody>
               <ModalFooter>
@@ -48,7 +50,7 @@ export const Logout: React.FC<TLogout> = ({ isFull }) => {
                   className="text-white rounded-lg font-medium"
                   onPress={onClose}
                 >
-                  Geri
+                  {t(`back`)}
                 </Button>
                 <Button
                   className="bg-base text-white rounded-lg font-medium"
@@ -57,7 +59,7 @@ export const Logout: React.FC<TLogout> = ({ isFull }) => {
                     handleLogout();
                   }}
                 >
-                  Çıxış et
+                  {t(`log.logout`)}
                 </Button>
               </ModalFooter>
             </>
@@ -90,7 +92,7 @@ export const Logout: React.FC<TLogout> = ({ isFull }) => {
           onClick={onOpen}
           startContent={<IoIosLogOut size={17} />}
         >
-          Çıxış et
+          {t(`log.logout`)}
         </Button>
       </When>
     </>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMutation } from "react-query";
+import { useTranslation } from "react-i18next";
 import {
   Table,
   TableHeader,
@@ -20,6 +21,7 @@ import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 import { LuRefreshCcw } from "react-icons/lu";
 
 export const Check = () => {
+  const { t } = useTranslation();
   const {
     data,
     isLoading,
@@ -33,14 +35,14 @@ export const Check = () => {
   }, []);
 
   return (
-    <Wrapper title="Hal-hazırda plazada olanlar">
+    <Wrapper title={t("titles.checkTitle")}>
       <div className="w-full h-12 bg-white rounded-lg mb-2 flex items-center justify-end px-2">
         <Button
           className="rounded-lg bg-base text-white"
           startContent={<LuRefreshCcw size={20} />}
           onClick={() => getInPlace()}
         >
-          Cədvəli yenilə
+          {t("updateTable")}
         </Button>
       </div>
       {isLoading && (
@@ -53,22 +55,22 @@ export const Check = () => {
           <Table>
             <TableHeader>
               <TableColumn className="font-semibold text-base">
-                İstifadəçi
+                {t("tables.user")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Otaq
+                {t("tables.room")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Tarix
+                {t("tables.date")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Cihaz
+                {t("tables.device")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Giriş / Çıxış
+                {t("tables.detect")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Status
+                {t("tables.status")}
               </TableColumn>
             </TableHeader>
             <TableBody>

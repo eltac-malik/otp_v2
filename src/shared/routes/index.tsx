@@ -8,28 +8,28 @@ import { PATH } from "./path";
 export const sideList = [
   {
     id: 1,
-    title: "Monitoring",
+    title: "monitoring",
     permission: [],
     icon: () => <LuMonitorPlay size={17} />,
     path: PATH.MONITORING,
   },
   {
     id: 2,
-    title: "Tarixçə",
+    title: "history",
     permission: [],
     icon: () => <GrHistory size={17} />,
     path: PATH.HISTORY,
   },
   {
     id: 3,
-    title: "İstifadəçilər",
+    title: "users",
     permission: [],
     icon: () => <FaUsers size={17} />,
     path: PATH.USERS,
   },
   {
     id: 4,
-    title: "Yoxlanış",
+    title: "check",
     permission: [],
     icon: () => <FaListCheck size={17} />,
     path: PATH.CHECK,

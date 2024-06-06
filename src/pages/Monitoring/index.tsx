@@ -1,4 +1,6 @@
 import { useQuery } from "react-query";
+import { useTranslation } from "react-i18next";
+
 import {
   Table,
   TableHeader,
@@ -8,14 +10,16 @@ import {
   TableCell,
   Spinner,
 } from "@nextui-org/react";
-import { Wrapper } from "@/components/Wrapper";
-import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
-import { ENDPOINTS } from "@/api/routing";
+
 import Https from "@/api/http";
-import { IMonitoring } from "@/shared/models/api";
+import { ENDPOINTS } from "@/api/routing";
+import { Wrapper } from "@/components/Wrapper";
 import { NotFound } from "@/components/NotFound";
+import { IMonitoring } from "@/shared/models/api";
+import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 
 export const Monitoring = () => {
+  const { t } = useTranslation();
   const { data, isLoading, refetch } = useQuery<IMonitoring[]>(
     "MONITORING",
     () => Https.get(ENDPOINTS.GET_LIVE_MONITORING()),
@@ -29,7 +33,7 @@ export const Monitoring = () => {
   );
 
   return (
-    <Wrapper title="Monitoring">
+    <Wrapper title={t("monitoring")}>
       {isLoading && (
         <div className="w-full flex items-start justify-center">
           <Spinner />
@@ -41,22 +45,22 @@ export const Monitoring = () => {
           <Table>
             <TableHeader>
               <TableColumn className="font-semibold text-base">
-                İstifadəçi
+                {t("tables.user")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Otaq
+                {t("tables.room")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Tarix
+                {t("tables.date")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Cihaz
+                {t("tables.device")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Giriş / Çıxış
+                {t("tables.detect")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Status
+                {t("tables.status")}
               </TableColumn>
             </TableHeader>
             <TableBody>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMutation } from "react-query";
+import { useTranslation } from "react-i18next";
 import {
   Table,
   TableHeader,
@@ -19,6 +20,7 @@ import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 import { FilterBox } from "./components/FilterBox";
 
 export const History = () => {
+  const { t } = useTranslation();
   const { mutate, data, isLoading } = useMutation({
     mutationFn: (data: Record<string, any>) =>
       Https.get(ENDPOINTS.GET_HISTORY_MONITORING(data)),
@@ -29,7 +31,7 @@ export const History = () => {
   }, []);
 
   return (
-    <Wrapper title="Tarixçə">
+    <Wrapper title={t("history")}>
       <FilterBox mutate={mutate} />
       {isLoading && (
         <div className="w-full flex items-start justify-center">
@@ -43,22 +45,22 @@ export const History = () => {
           <Table>
             <TableHeader>
               <TableColumn className="font-semibold text-base">
-                İstifadəçi
+                {t("tables.user")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Otaq
+                {t("tables.room")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Tarix
+                {t("tables.date")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Cihaz
+                {t("tables.device")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Giriş / Çıxış
+                {t("tables.detect")}
               </TableColumn>
               <TableColumn className="font-semibold text-base">
-                Status
+                {t("tables.status")}
               </TableColumn>
             </TableHeader>
             <TableBody>

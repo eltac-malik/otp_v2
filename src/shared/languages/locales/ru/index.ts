@@ -1,0 +1,52 @@
+export const TR_RU = {
+  translation: {
+    monitoring: "Мониторинг",
+    history: "История",
+    users: "Пользователи",
+    check: "Инспекция",
+    log: {
+      logout: "выход",
+      in: "Входить",
+      confirmText: "Вы действительно хотите выйти?",
+    },
+    back: "Назад",
+    placeholders: {
+      userCode: "Код пользователя",
+      psw: "Пароль",
+      userName: "Имя пользователя и фамилия",
+      roomNo: "Комната нет",
+      userFullName: "имя пользователя",
+      userSurname: "Имя пользователя",
+      roomNumber: "Номер комнаты",
+    },
+    updateTable: "Обновить таблицу",
+    titles: {
+      checkTitle: "Те, кто сейчас на площади",
+    },
+    tables: {
+      user: "Пользователь",
+      room: "Комната",
+      date: "История",
+      device: "Устройство",
+      detect: "Вход/Выход",
+      status: "Положение дел",
+      operation: "Операция",
+    },
+    tripType: {
+      1: "Введение",
+      2: "Выход",
+      3: "Введение",
+      4: "Выход",
+    },
+    statuses: {
+      guest: "Гость",
+      employee: "Рабочий",
+      paid: "Оплаченный",
+      tenant: "Жилец",
+      free: "Бесплатно",
+    },
+    search: "Поиск",
+    edit: "Исправь это",
+    submit: "Подтверждать",
+  },
+};

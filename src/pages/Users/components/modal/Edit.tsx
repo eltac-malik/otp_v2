@@ -3,6 +3,7 @@ import { ENDPOINTS } from "@/api/routing";
 import { IUsers } from "@/shared/models/api";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useMutation } from "react-query";
 
 type TEdit = {
@@ -17,6 +18,7 @@ export const Edit: React.FC<TEdit> = ({
   mutate: refetch,
 }) => {
   const { register, handleSubmit, setValue } = useForm();
+  const { t } = useTranslation();
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (data: any) =>
@@ -38,7 +40,7 @@ export const Edit: React.FC<TEdit> = ({
     >
       <Input
         className="my-2 mr-1 w-full"
-        placeholder="İstifadəçi adı"
+        placeholder={t("placeholders.userFullName")}
         defaultValue={currentUser?.username}
         classNames={{
           inputWrapper: "h-10 bg-white dark:bg-black border-1 rounded-lg",
@@ -47,7 +49,7 @@ export const Edit: React.FC<TEdit> = ({
       />
       <Input
         className="my-2 mr-1 w-full"
-        placeholder="İstifadəçi soyadı"
+        placeholder={t("placeholders.userSurname")}
         defaultValue={currentUser?.surname}
         classNames={{
           inputWrapper: "h-10 bg-white dark:bg-black border-1 rounded-lg",
@@ -56,7 +58,7 @@ export const Edit: React.FC<TEdit> = ({
       />
       <Input
         className="my-2 mr-1 w-full"
-        placeholder="Otaq nömrəsi"
+        placeholder={t("placeholders.roomNumber")}
         defaultValue={currentUser?.roomNumber}
         classNames={{
           inputWrapper: "h-10 bg-white dark:bg-black border-1 rounded-lg",
@@ -69,7 +71,7 @@ export const Edit: React.FC<TEdit> = ({
           mainWrapper: `h-10 bg-white dark:bg-black rounded-lg`,
           trigger: `min-h-10 h-10 bg-white dark:bg-black rounded-lg`,
         }}
-        defaultSelectedKeys={currentUser?.userType}
+        selectedKeys={currentUser?.userType}
         onChange={(e) => setValue("userType", e.target.value)}
       >
         {["Free", "Paid", "Tenant", "Guest"].map((item: string) => {
@@ -86,7 +88,7 @@ export const Edit: React.FC<TEdit> = ({
         color="success"
         isLoading={isLoading}
       >
-        Təsdiqlə
+        {t("submit")}
       </Button>
     </form>
   );

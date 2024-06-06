@@ -1,6 +1,8 @@
 import { Chip } from "@nextui-org/react";
+import { useTranslation } from "react-i18next";
 
 export const statusChip = (e: string) => {
+  const { t } = useTranslation();
   switch (e) {
     case "Guest":
       return (
@@ -13,7 +15,7 @@ export const statusChip = (e: string) => {
             content: `flex iitems-center justify-center`,
           }}
         >
-          Qonaq
+          {t("statuses.guest")}
         </Chip>
       );
     case "Employee":
@@ -27,7 +29,7 @@ export const statusChip = (e: string) => {
             content: `flex iitems-center justify-center`,
           }}
         >
-          İşçi
+          {t("statuses.employee")}
         </Chip>
       );
     case "Paid":
@@ -41,7 +43,7 @@ export const statusChip = (e: string) => {
             content: `flex iitems-center justify-center`,
           }}
         >
-          Ödənişli
+          {t("statuses.paid")}
         </Chip>
       );
     case "Tenant":
@@ -55,7 +57,7 @@ export const statusChip = (e: string) => {
             content: `flex iitems-center justify-center`,
           }}
         >
-          Ödənişli
+          {t("statuses.tenant")}
         </Chip>
       );
     case "Free":
@@ -69,22 +71,23 @@ export const statusChip = (e: string) => {
             content: `flex iitems-center justify-center`,
           }}
         >
-          Pulsuz
+          {t("statuses.free")}
         </Chip>
       );
   }
 };
 
 export const tripodType = (e: string) => {
+  const { t } = useTranslation();
   switch (e) {
     case "Old town tripod-1-In":
-      return <Chip color="primary">Giriş</Chip>;
+      return <Chip color="primary">{t("tripType.1")}</Chip>;
     case "Old town tripod-3-In":
-      return <Chip color="primary">Giriş</Chip>;
+      return <Chip color="primary">{t("tripType.3")}</Chip>;
     case "Old town tripod-2-Out":
-      return <Chip color="danger">Çıxış</Chip>;
+      return <Chip color="danger">{t("tripType.2")}</Chip>;
     case "Old town tripod-4-Out":
-      return <Chip color="danger">Çıxış</Chip>;
+      return <Chip color="danger">{t("tripType.4")}</Chip>;
   }
 };
 

@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Layout } from "@/layout/Dashboard";
@@ -13,6 +16,16 @@ import { Check } from "@/pages/Check";
 import "./App.css";
 
 function App() {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("lang")) === null) {
+      localStorage.setItem("lang", JSON.stringify("az"));
+    } else {
+      i18n.changeLanguage(JSON.parse(localStorage.getItem("lang")));
+    }
+  }, []);
+
   return (
     <Router>
       <Routes>

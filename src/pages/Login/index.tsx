@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
-import axios from "axios";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import { LoginSchama } from "@/shared/schemas";
 import { instance } from "@/api/http";
@@ -14,6 +15,7 @@ import { Toast } from "@/components/Toast";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -47,7 +49,7 @@ export const Login = () => {
         <h1 className="font-semibold text-2xl mb-1 ">Old Town Plaza</h1>
         <Input
           className="my-2 w-full"
-          placeholder="İstifadəçi kodu"
+          placeholder={t("placeholders.userCode")}
           {...register("userCode")}
           isInvalid={!!errors.userCode}
           errorMessage={errors?.userCode?.message as string}
@@ -57,7 +59,7 @@ export const Login = () => {
         />
         <Input
           className="my-2 w-full"
-          placeholder="Şifrə"
+          placeholder={t("placeholders.psw")}
           {...register("password")}
           type="password"
           isInvalid={!!errors.password}
@@ -71,7 +73,7 @@ export const Login = () => {
           className="text-white rounded-lg w-full h-12 my-2 bg-base"
           isLoading={isLoading}
         >
-          Daxil ol
+          {t("log.in")}
         </Button>
       </form>
     </div>

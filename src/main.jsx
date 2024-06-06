@@ -4,6 +4,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import App from "./App.jsx";
+import "./shared/languages/i18n";
 
 import "./index.css";
 import "react-modern-drawer/dist/index.css";
