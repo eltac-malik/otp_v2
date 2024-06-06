@@ -1,8 +1,6 @@
 import { Chip } from "@nextui-org/react";
-import { useTranslation } from "react-i18next";
 
-export const statusChip = (e: string) => {
-  const { t } = useTranslation();
+export const statusChip = (e: string, t: any) => {
   switch (e) {
     case "Guest":
       return (
@@ -77,8 +75,7 @@ export const statusChip = (e: string) => {
   }
 };
 
-export const tripodType = (e: string) => {
-  const { t } = useTranslation();
+export const tripodType = (e: string, t: any) => {
   switch (e) {
     case "Old town tripod-1-In":
       return <Chip className="bg-blue-500 text-white">{t("tripType.1")}</Chip>;

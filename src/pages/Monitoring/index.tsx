@@ -19,29 +19,45 @@ import { IMonitoring } from "@/shared/models/api";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 
 export const Monitoring = () => {
-  const { t } = useTranslation();
-  const { data, isLoading, refetch } = useQuery<IMonitoring[]>(
-    "MONITORING",
+  const [t] = useTranslation();
+
+  const { data, isLoading } = useQuery(
+    "getMonitoring",
     () => Https.get(ENDPOINTS.GET_LIVE_MONITORING()),
     {
-      onSuccess: () => {
-        setTimeout(() => {
-          refetch();
-        }, 3000);
-      },
+      refetchInterval: 3000,
     }
   );
 
+  if (!data || (data as IMonitoring[])?.length <= 0) {
+    return <NotFound />;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="w-full flex items-start justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
+  const renderTableRows = (data: IMonitoring[]) => {
+    return data.map((item, idx) => (
+      <TableRow key={idx + 1}>
+        <TableCell>{item?.person}</TableCell>
+        <TableCell>{item?.roomNumber}</TableCell>
+        <TableCell>{item?.time}</TableCell>
+        <TableCell>{tripodTextType(item?.device)}</TableCell>
+        <TableCell>{tripodType(item?.device, t)}</TableCell>
+        <TableCell>{statusChip(item?.type, t)}</TableCell>
+      </TableRow>
+    ));
+  };
+
   return (
     <Wrapper title={t("monitoring")}>
-      {isLoading && (
-        <div className="w-full flex items-start justify-center">
-          <Spinner />
-        </div>
-      )}
-      {(data as IMonitoring[])?.length <= 0 && <NotFound />}
-      {!isLoading && (data as IMonitoring[])?.length > 0 && (
-        <div className="w-full flex items-start justify-start">
+      <div className="w-full flex items-start justify-start">
+        {!!data && !isLoading && (
           <Table>
             <TableHeader>
               <TableColumn className="font-semibold text-base text-black">
@@ -63,23 +79,10 @@ export const Monitoring = () => {
                 {t("tables.status")}
               </TableColumn>
             </TableHeader>
-            <TableBody>
-              {(data as IMonitoring[]).map((item: IMonitoring) => {
-                return (
-                  <TableRow key={item.time}>
-                    <TableCell>{item?.person}</TableCell>
-                    <TableCell>{item?.roomNumber}</TableCell>
-                    <TableCell>{item?.time}</TableCell>
-                    <TableCell>{tripodTextType(item?.device)}</TableCell>
-                    <TableCell>{tripodType(item?.device)}</TableCell>
-                    <TableCell>{statusChip(item?.type)}</TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
+            <TableBody>{renderTableRows(data as IMonitoring[])}</TableBody>
           </Table>
-        </div>
-      )}
+        )}
+      </div>
     </Wrapper>
   );
 };

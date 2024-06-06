@@ -64,15 +64,15 @@ export const History = () => {
               </TableColumn>
             </TableHeader>
             <TableBody>
-              {(data as IMonitoring[]).map((item: IMonitoring) => {
+              {(data as IMonitoring[]).map((item: IMonitoring, idx: number) => {
                 return (
-                  <TableRow key={item.time}>
+                  <TableRow key={idx + 1}>
                     <TableCell>{item?.person}</TableCell>
                     <TableCell>{item?.roomNumber}</TableCell>
                     <TableCell>{item?.time}</TableCell>
                     <TableCell>{tripodTextType(item?.device)}</TableCell>
-                    <TableCell>{tripodType(item?.device)}</TableCell>
-                    <TableCell>{statusChip(item?.type)}</TableCell>
+                    <TableCell>{tripodType(item?.device, t)}</TableCell>
+                    <TableCell>{statusChip(item?.type, t)}</TableCell>
                   </TableRow>
                 );
               })}

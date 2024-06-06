@@ -74,13 +74,13 @@ export const Users = () => {
                     search.toLowerCase()
                   )
                 )
-                .map((item: IUsers) => {
+                .map((item: IUsers, idx: number) => {
                   return (
-                    <TableRow key={item.id}>
+                    <TableRow key={idx + 1}>
                       <TableCell>{item?.personPin}</TableCell>
                       <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
                       <TableCell>{item?.roomNumber}</TableCell>
-                      <TableCell>{statusChip(item?.userType)}</TableCell>
+                      <TableCell>{statusChip(item?.userType, t)}</TableCell>
                       <TableCell>{item?.createdAt?.split(".")[0]}</TableCell>
                       <TableCell
                         align="left"
