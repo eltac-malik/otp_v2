@@ -81,13 +81,13 @@ export const tripodType = (e: string) => {
   const { t } = useTranslation();
   switch (e) {
     case "Old town tripod-1-In":
-      return <Chip color="primary">{t("tripType.1")}</Chip>;
+      return <Chip className="bg-blue-500 text-white">{t("tripType.1")}</Chip>;
     case "Old town tripod-3-In":
-      return <Chip color="primary">{t("tripType.3")}</Chip>;
+      return <Chip className="bg-blue-500 text-white">{t("tripType.3")}</Chip>;
     case "Old town tripod-2-Out":
-      return <Chip color="danger">{t("tripType.2")}</Chip>;
+      return <Chip className="bg-red-500 text-white">{t("tripType.2")}</Chip>;
     case "Old town tripod-4-Out":
-      return <Chip color="danger">{t("tripType.4")}</Chip>;
+      return <Chip className="bg-red-500 text-white">{t("tripType.4")}</Chip>;
   }
 };
 

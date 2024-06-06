@@ -48,5 +48,6 @@ export const TR_EN = {
     search: "Search",
     edit: "Edit",
     submit: "Submit",
+    tryAgain: "Try again !",
   },
 };

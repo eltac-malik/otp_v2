@@ -45,19 +45,19 @@ export const Users = () => {
         <div className="w-full flex items-start justify-start">
           <Table isStriped>
             <TableHeader>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 Id kod
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.user")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.room")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.status")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.date")}
               </TableColumn>
               <TableColumn

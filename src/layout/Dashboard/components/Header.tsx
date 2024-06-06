@@ -40,6 +40,9 @@ export const Header = () => {
         <p className="w-12 h-12 rounded-full overflow-hidden cursor-pointer flex items-center justify-center ml-5 font-semibold text-xl">
           <img className="w-full" src={OTPLogo} />
         </p>
+        <h1 className="font-semibold text-xl text-yellow-600">
+          Old Town Plaza
+        </h1>
         <div className="flex items-center justify-end">
           {userInfo && (
             <h2 className="mr-2 text-sm font-semibold leading-3 ">{`${userInfo?.user?.firstname} ${userInfo?.user?.lastname}`}</h2>

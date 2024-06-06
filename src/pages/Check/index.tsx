@@ -57,19 +57,19 @@ export const Check = () => {
               <TableColumn className="font-semibold text-base">
                 {t("tables.user")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.room")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.date")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.device")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base text-black">
                 {t("tables.detect")}
               </TableColumn>
-              <TableColumn className="font-semibold text-base">
+              <TableColumn className="font-semibold text-base  text-black">
                 {t("tables.status")}
               </TableColumn>
             </TableHeader>

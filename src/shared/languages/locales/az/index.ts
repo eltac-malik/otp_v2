@@ -48,5 +48,6 @@ export const TR_AZ = {
     search: "Axtar",
     edit: "Düzəliş et",
     submit: "Təsdiqlə",
+    tryAgain: "Yenidən cəhd edin !",
   },
 };

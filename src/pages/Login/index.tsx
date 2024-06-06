@@ -35,7 +35,7 @@ export const Login = () => {
       navigate("/");
     },
     onError: () => {
-      toast.error("Yenidən cəhd edin !");
+      toast.error(t("tryAgain"));
     },
   });
 

@@ -48,5 +48,6 @@ export const TR_RU = {
     search: "Поиск",
     edit: "Исправь это",
     submit: "Подтверждать",
+    tryAgain: "Попробуйте еще раз !",
   },
 };
