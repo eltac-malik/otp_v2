@@ -6,11 +6,12 @@ import { Button, Input } from "@nextui-org/react";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 import { LoginSchama } from "@/shared/schemas";
 import { instance } from "@/api/http";
 import { ENDPOINTS } from "@/api/routing";
-import { useToken } from "@/shared/store";
+import { useToken, useUserInfo } from "@/shared/store";
 import { Toast } from "@/components/Toast";
 
 export const Login = () => {
@@ -25,6 +26,7 @@ export const Login = () => {
   });
 
   const { setToken } = useToken();
+  const { setUserInfo } = useUserInfo();
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (values: Record<string, string>) =>
@@ -32,6 +34,8 @@ export const Login = () => {
     onSuccess: (res) => {
       setToken(res.data?.jwt);
       instance.defaults.headers.Authorization = "Bearer " + res.data?.jwt;
+      const decoded = jwtDecode(res.data?.jwt);
+      setUserInfo(decoded);
       navigate("/");
     },
     onError: () => {

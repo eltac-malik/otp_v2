@@ -9,16 +9,13 @@ export type TFavoriteOperation = {
 };
 
 export interface IUserInfo {
-  access_token: string;
-  user: {
-    avatar: string;
-    email: string;
-    firstname: string;
-    lastname: string;
-    phoneNumber: string;
-    role: string;
-    _id: string;
-  };
+  sub: string;
+  userCode: string;
+  lastname: string;
+  firstname: string;
+  role: string;
+  iat: number;
+  exp: number;
 }
 
 export type TUserInfo = {

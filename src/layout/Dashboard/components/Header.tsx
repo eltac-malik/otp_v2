@@ -8,6 +8,7 @@ import { useUserInfo } from "@/shared/store";
 export const Header = () => {
   const { i18n } = useTranslation();
   const { userInfo } = useUserInfo();
+  console.log(userInfo);
 
   const [currentLang, setCurrentLang] = useState(
     JSON.stringify(localStorage.getItem("lang") || "az")
@@ -45,7 +46,7 @@ export const Header = () => {
         </h1>
         <div className="flex items-center justify-end">
           {userInfo && (
-            <h2 className="mr-2 text-sm font-semibold leading-3 ">{`${userInfo?.user?.firstname} ${userInfo?.user?.lastname}`}</h2>
+            <h2 className="mr-2 text-sm font-semibold leading-3 ">{`${userInfo?.firstname} ${userInfo?.lastname}`}</h2>
           )}
           <Avatar className="bg-base text-white" size="sm" />
           <Select
