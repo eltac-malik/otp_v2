@@ -4,6 +4,7 @@ export interface IMonitoring {
   person: string;
   time: string;
   type: string;
+  image: string | null;
 }
 
 export interface IUsers {
@@ -18,4 +19,5 @@ export interface IUsers {
   username: string;
   personPin: string;
   roomNumber: string;
+  image: string | null;
 }

@@ -9,6 +9,7 @@ import {
   TableColumn,
   TableHeader,
   TableRow,
+  useDisclosure,
 } from "@nextui-org/react";
 
 import Https from "@/api/http";
@@ -19,10 +20,13 @@ import { NotFound } from "@/components/NotFound";
 import { statusChip } from "@/shared/utils";
 import { Headline } from "./components/Headline";
 import { Operation } from "./components/Operation";
+import { DetailModal } from "@/components/DetailModal";
 
 export const Users = () => {
   const { t } = useTranslation();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [search, setSearch] = useState<string>("");
+  const [currentItem, setCurrentItem] = useState<IUsers | null>(null);
   const { mutate, data, isLoading } = useMutation({
     mutationFn: () => Https.get(ENDPOINTS.GET_USERS()),
   });
@@ -31,8 +35,20 @@ export const Users = () => {
     mutate();
   }, []);
 
+  const handleDetail = (item: IUsers) => {
+    setCurrentItem(item);
+    onOpen();
+  };
+
   return (
     <Wrapper title={t("users")}>
+      <DetailModal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        name={currentItem?.username}
+        image={currentItem?.image}
+        userId={currentItem?.id}
+      />
       <Headline setSearch={setSearch} search={search} />
       {isLoading && (
         <div className="w-full flex items-start justify-center">
@@ -78,7 +94,10 @@ export const Users = () => {
                   return (
                     <TableRow key={idx + 1}>
                       <TableCell>{item?.personPin}</TableCell>
-                      <TableCell>{`${item?.username} ${item.surname}`}</TableCell>
+                      <TableCell
+                        onClick={() => handleDetail(item)}
+                        className="cursor-pointer hover:bg-base rounded-lg hover:text-white hover:font-semibold"
+                      >{`${item?.username} ${item.surname}`}</TableCell>
                       <TableCell>{item?.roomNumber}</TableCell>
                       <TableCell>{statusChip(item?.userType, t)}</TableCell>
                       <TableCell>{item?.createdAt?.split(".")[0]}</TableCell>

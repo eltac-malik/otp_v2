@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 
@@ -9,6 +10,7 @@ import {
   TableRow,
   TableCell,
   Spinner,
+  useDisclosure,
 } from "@nextui-org/react";
 
 import Https from "@/api/http";
@@ -17,9 +19,13 @@ import { Wrapper } from "@/components/Wrapper";
 import { NotFound } from "@/components/NotFound";
 import { IMonitoring } from "@/shared/models/api";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
+import { DetailModal } from "@/components/DetailModal";
 
 export const Monitoring = () => {
   const [t] = useTranslation();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const [currentItem, setCurrentItem] = useState<IMonitoring | null>(null);
 
   const { data, isLoading } = useQuery(
     "getMonitoring",
@@ -41,10 +47,20 @@ export const Monitoring = () => {
     );
   }
 
+  const handleDetail = (item: IMonitoring) => {
+    setCurrentItem(item);
+    onOpen();
+  };
+
   const renderTableRows = (data: IMonitoring[]) => {
     return data.map((item, idx) => (
       <TableRow key={idx + 1}>
-        <TableCell>{item?.person}</TableCell>
+        <TableCell
+          className="cursor-pointer hover:bg-base rounded-lg hover:text-white hover:font-semibold"
+          onClick={() => handleDetail(item)}
+        >
+          {item?.person}
+        </TableCell>
         <TableCell>{item?.roomNumber}</TableCell>
         <TableCell>{item?.time}</TableCell>
         <TableCell>{tripodTextType(item?.device)}</TableCell>
@@ -56,6 +72,13 @@ export const Monitoring = () => {
 
   return (
     <Wrapper title={t("monitoring")}>
+      <DetailModal
+        readOnly
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        name={currentItem?.person}
+        image={currentItem?.image}
+      />
       <div className="w-full flex items-start justify-start">
         {!!data && !isLoading && (
           <Table>

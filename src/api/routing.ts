@@ -20,4 +20,5 @@ export const ENDPOINTS = {
     return `${BASE_URL}/monitoring/offline?username=${username}&from=${from}&to=${to}&card_id=${card_id}&room_number=${room_number}`;
   },
   GET_IN_PLACE: () => `${BASE_URL}/monitoring/live?isInside=true`,
-};
+  POST_IMAGE_UPLOAD: () => `${BASE_URL}/files/upload`,
+}
