@@ -31,6 +31,7 @@ export const TR_EN = {
       detect: "Login / Logout",
       status: "Status",
       operation: "Operations",
+      photo:"Image"
     },
     tripType: {
       1: "In",

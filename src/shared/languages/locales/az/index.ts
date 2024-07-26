@@ -31,6 +31,7 @@ export const TR_AZ = {
       detect: "Giriş / Çıxış",
       status: "Status",
       operation: "Əməliyyat",
+      photo:"Şəkil"
     },
     tripType: {
       1: "Giriş",

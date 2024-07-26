@@ -11,6 +11,7 @@ import {
   TableCell,
   Spinner,
   useDisclosure,
+  Image,
 } from "@nextui-org/react";
 
 import Https from "@/api/http";
@@ -20,6 +21,7 @@ import { NotFound } from "@/components/NotFound";
 import { IMonitoring } from "@/shared/models/api";
 import { statusChip, tripodTextType, tripodType } from "@/shared/utils";
 import { DetailModal } from "@/components/DetailModal";
+import Default_img from "@/assets/img/default_img.png";
 
 export const Monitoring = () => {
   const [t] = useTranslation();
@@ -66,6 +68,11 @@ export const Monitoring = () => {
         <TableCell>{tripodTextType(item?.device)}</TableCell>
         <TableCell>{tripodType(item?.device, t)}</TableCell>
         <TableCell>{statusChip(item?.type, t)}</TableCell>
+        <TableCell>
+          <div className="w-[100px] h-[100px] flex items-center justify-center rounded-lg border-red-500">
+            <Image width={100} height={100} src={item?.image ?? Default_img} />
+          </div>
+        </TableCell>
       </TableRow>
     ));
   };
@@ -100,6 +107,9 @@ export const Monitoring = () => {
               </TableColumn>
               <TableColumn className="font-semibold text-base text-black">
                 {t("tables.status")}
+              </TableColumn>
+              <TableColumn className="font-semibold text-base text-black">
+                {t("tables.photo")}
               </TableColumn>
             </TableHeader>
             <TableBody>{renderTableRows(data as IMonitoring[])}</TableBody>

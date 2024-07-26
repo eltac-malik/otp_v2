@@ -31,6 +31,7 @@ export const TR_RU = {
       detect: "Вход/Выход",
       status: "Положение дел",
       operation: "Операция",
+      photo: "Изображение",
     },
     tripType: {
       1: "Введение",
